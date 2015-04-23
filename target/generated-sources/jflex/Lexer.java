@@ -35,7 +35,7 @@ public class Lexer {
    */
   private static final String ZZ_CMAP_PACKED = 
     "\45\0\1\6\12\0\12\7\1\1\1\2\1\3\1\5\1\4\2\0"+
-    "\32\10\6\0\32\10\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uff95\0";
+    "\32\11\4\0\1\10\1\0\32\11\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uff95\0";
 
   /** 
    * Translates characters to character classes
@@ -77,8 +77,8 @@ public class Lexer {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\11\0\11\0\11\0\11\0\11\0\22\0\33"+
-    "\0\44\0\55\0\11\0\11";
+    "\0\0\0\12\0\12\0\12\0\12\0\12\0\24\0\36"+
+    "\0\50\0\62\0\12\0\12";
 
   private static int [] zzUnpackRowMap() {
     int [] result = new int[12];
@@ -105,11 +105,11 @@ public class Lexer {
 
   private static final String ZZ_TRANS_PACKED_0 =
     "\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11"+
-    "\1\12\16\0\1\13\11\0\1\14\11\0\1\11\11\0"+
+    "\2\12\17\0\1\13\12\0\1\14\12\0\1\11\13\0"+
     "\1\12";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[54];
+    int [] result = new int[60];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -232,8 +232,8 @@ public class Lexer {
         try{
             in = new FileReader(archivo);
             Lexer lex = new Lexer(in);
-            while(!lexer.zzAtEOF){
-            lexer.yylex();
+            while(!lex.zzAtEOF){
+            lex.yylex();
             }
         }catch(Exception ex){
             System.out.println("NO JALO D:");
@@ -268,7 +268,7 @@ public class Lexer {
     char [] map = new char[0x110000];
     int i = 0;  /* index in packed string  */
     int j = 0;  /* index in unpacked array */
-    while (i < 60) {
+    while (i < 64) {
       int  count = packed.charAt(i++);
       char value = packed.charAt(i++);
       do map[j++] = value; while (--count > 0);

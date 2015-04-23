@@ -16,8 +16,8 @@ import java.util.List;
         try{
             in = new FileReader(archivo);
             Lexer lex = new Lexer(in);
-            while(!lexer.zzAtEOF){
-            lexer.yylex();
+            while(!lex.zzAtEOF){
+            lex.yylex();
             }
         }catch(Exception ex){
             System.out.println("NO JALO D:");
@@ -41,4 +41,4 @@ import java.util.List;
 ={2}    {tokens.add("=="); System.out.println("IGUAL");}
 %{2}    {tokens.add("%%"); System.out.println("MOD");}
 [0-9]+  {tokens.add("numero"); System.out.println("NUM");}
-[A-Za-z]+ {tokens.add("id"); System.out.println("ID");}
+[_a-zA-Z][A-Za-z]* {tokens.add("id"); System.out.println("ID");}
